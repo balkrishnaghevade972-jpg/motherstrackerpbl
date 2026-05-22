@@ -1,52 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutrition Tracker for Mothers</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>🌸 Nutrition Tracker for Mothers</h1>
+  <div class="language-box">
+    <select id="language" onchange="changeLanguage()">
+      <option value="english">English</option>
+      <option value="marathi">मराठी</option>
+    </select>
+  </div>
 
-    <p class="subtitle">
-      Healthy Mothers, Healthy Future
-    </p>
+  <h1 id="title">🌸 Nutrition Tracker for Mothers</h1>
 
-    <div class="card">
+  <p class="subtitle" id="subtitle">
+    Healthy Mothers, Healthy Future
+  </p>
 
-      <input type="text" id="name" placeholder="Enter Mother's Name">
+  <div class="card">
 
-      <input type="number" id="weight" placeholder="Enter Weight (KG)">
+    <input type="text" id="name" placeholder="Enter Mother's Name">
 
-      <select id="stage">
-        <option>Before Pregnancy</option>
-        <option>First Trimester</option>
-        <option>Second Trimester</option>
-        <option>Third Trimester</option>
-        <option>After Pregnancy</option>
-      </select>
+    <input type="number" id="weight" placeholder="Enter Weight (KG)">
 
-      <button onclick="generatePlan()">
-        Generate Nutrition Plan
-      </button>
+    <select id="stage">
+      <option>Before Pregnancy</option>
+      <option>First Trimester</option>
+      <option>Second Trimester</option>
+      <option>Third Trimester</option>
+      <option>After Pregnancy</option>
+    </select>
 
-    </div>
-
-    <div class="result" id="result">
-
-      <h2>Personalized Nutrition Suggestions</h2>
-
-      <p>Your nutrition details will appear here.</p>
-
-    </div>
+    <button onclick="generatePlan()" id="btn">
+      Generate Nutrition Plan
+    </button>
 
   </div>
 
-  <script src="script.js"></script>
+  <div class="result" id="result">
+
+    <h2>🌸 Personalized Nutrition Suggestions</h2>
+
+    <p>Your nutrition details will appear here.</p>
+
+  </div>
+
+</div>
+
+<!-- Popup -->
+
+<div id="popup" class="popup">
+
+  <div class="popup-content">
+
+    <span class="close" onclick="closePopup()">
+      &times;
+    </span>
+
+    <div id="popup-data"></div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
