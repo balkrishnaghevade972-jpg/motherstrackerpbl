@@ -1,109 +1,174 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: #ffe6f0;
+function generatePlan() {
+
+  let name = document.getElementById("name").value;
+  let weight = parseInt(document.getElementById("weight").value);
+  let stage = document.getElementById("stage").value;
+
+  let calories = "";
+  let nutrients = "";
+  let meals = "";
+
+  // Underweight
+
+  if(weight < 50) {
+
+    calories = "2600 kcal/day";
+
+    nutrients =
+      "Protein, Iron, Calcium, Healthy Fats";
+
+    meals =
+    `
+      <h2>🍽 Underweight Mother Diet Plan</h2>
+
+      <div class="meal-box">
+
+        <h3>🌅 Breakfast</h3>
+        <p>Banana Milkshake with Oats and Almonds</p>
+
+        <h3>🍛 Lunch</h3>
+        <p>Rice, Dal, Paneer, Salad</p>
+
+        <h3>☕ Snacks</h3>
+        <p>Dry Fruits and Yogurt</p>
+
+        <h3>🌙 Dinner</h3>
+        <p>Vegetable Soup with Chapati</p>
+
+      </div>
+    `;
+  }
+
+  // Normal Weight
+
+  else if(weight >= 50 && weight <= 70) {
+
+    calories = "2300 kcal/day";
+
+    nutrients =
+      "Balanced Protein, Vitamins, Iron";
+
+    meals =
+    `
+      <h2>🍽 Normal Weight Diet Plan</h2>
+
+      <div class="meal-box">
+
+        <h3>🌅 Breakfast</h3>
+        <p>Idli with Coconut Chutney and Milk</p>
+
+        <h3>🍛 Lunch</h3>
+        <p>Chapati, Dal, Vegetables</p>
+
+        <h3>☕ Snacks</h3>
+        <p>Fruit Salad and Nuts</p>
+
+        <h3>🌙 Dinner</h3>
+        <p>Khichdi with Curd</p>
+
+      </div>
+    `;
+  }
+
+  // Overweight
+
+  else {
+
+    calories = "2000 kcal/day";
+
+    nutrients =
+      "Low Fat, Fiber Rich Diet";
+
+    meals =
+    `
+      <h2>🍽 Overweight Mother Diet Plan</h2>
+
+      <div class="meal-box">
+
+        <h3>🌅 Breakfast</h3>
+        <p>Oats with Fruits</p>
+
+        <h3>🍛 Lunch</h3>
+        <p>Brown Rice with Vegetables</p>
+
+        <h3>☕ Snacks</h3>
+        <p>Sprouts Salad</p>
+
+        <h3>🌙 Dinner</h3>
+        <p>Soup with Multigrain Roti</p>
+
+      </div>
+    `;
+  }
+
+  document.getElementById("result").innerHTML = `
+
+    <h2>🌸 Personalized Nutrition Plan</h2>
+
+    <p><b>Mother Name:</b> ${name}</p>
+
+    <p><b>Pregnancy Stage:</b> ${stage}</p>
+
+    <p><b>Calories:</b> ${calories}</p>
+
+    <p><b>Essential Nutrients:</b> ${nutrients}</p>
+
+    <button onclick="openPopup()">
+      View Detailed Diet Plan
+    </button>
+  `;
+
+  document.getElementById("popup-data").innerHTML = meals;
+
+  // Chrome Notification
+
+  if(Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
+
+  if(Notification.permission === "granted") {
+
+    new Notification("🌸 Nutrition Reminder", {
+      body: "Drink water and eat healthy meals 💧"
+    });
+  }
 }
 
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: auto;
-  padding: 30px;
-  text-align: center;
+function openPopup() {
+
+  document.getElementById("popup").style.display = "block";
 }
 
-.language-box {
-  text-align: right;
+function closePopup() {
+
+  document.getElementById("popup").style.display = "none";
 }
 
-.language-box select {
-  padding: 10px;
-  border-radius: 10px;
-}
+function changeLanguage() {
 
-h1 {
-  color: #d63384;
-  font-size: 40px;
-}
+  let language = document.getElementById("language").value;
 
-.subtitle {
-  color: #555;
-}
+  if(language === "marathi") {
 
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
-}
+    document.getElementById("title").innerHTML =
+      "🌸 मातांसाठी पोषण ट्रॅकर";
 
-input,
-select {
-  width: 90%;
-  padding: 12px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
+    document.getElementById("subtitle").innerHTML =
+      "निरोगी माता, निरोगी भविष्य";
 
-button {
-  background: #ff66a3;
-  color: white;
-  border: none;
-  padding: 14px 25px;
-  border-radius: 12px;
-  font-size: 18px;
-  cursor: pointer;
-}
+    document.getElementById("btn").innerHTML =
+      "पोषण योजना तयार करा";
+  }
 
-button:hover {
-  background: #e05590;
-}
+  else {
 
-.result {
-  background: white;
-  margin-top: 30px;
-  padding: 25px;
-  border-radius: 20px;
-}
+    document.getElementById("title").innerHTML =
+      "🌸 Nutrition Tracker for Mothers";
 
-.meal-box {
-  background: #fff0f5;
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 15px;
-}
+    document.getElementById("subtitle").innerHTML =
+      "Healthy Mothers, Healthy Future";
 
-/* Popup */
-
-.popup {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-}
-
-.popup-content {
-  background: white;
-  width: 80%;
-  max-width: 600px;
-  margin: 5% auto;
-  padding: 30px;
-  border-radius: 20px;
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  font-size: 30px;
-  cursor: pointer;
-  color: #d63384;
+    document.getElementById("btn").innerHTML =
+      "Generate Nutrition Plan";
+  }
 }
