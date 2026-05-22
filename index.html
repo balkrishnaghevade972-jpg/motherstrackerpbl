@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nutrition Tracker for Mothers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>🌸 Nutrition Tracker for Mothers</h1>
+
+    <p class="subtitle">
+      Healthy Mothers, Healthy Future
+    </p>
+
+    <div class="card">
+
+      <input type="text" id="name" placeholder="Enter Mother's Name">
+
+      <input type="number" id="weight" placeholder="Enter Weight (KG)">
+
+      <select id="stage">
+        <option>Before Pregnancy</option>
+        <option>First Trimester</option>
+        <option>Second Trimester</option>
+        <option>Third Trimester</option>
+        <option>After Pregnancy</option>
+      </select>
+
+      <button onclick="generatePlan()">
+        Generate Nutrition Plan
+      </button>
+
+    </div>
+
+    <div class="result" id="result">
+
+      <h2>Personalized Nutrition Suggestions</h2>
+
+      <p>Your nutrition details will appear here.</p>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
