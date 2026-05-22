@@ -1,98 +1,109 @@
-function generatePlan() {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #ffe6f0;
+}
 
-  let name = document.getElementById("name").value;
-  let weight = parseInt(document.getElementById("weight").value);
-  let stage = document.getElementById("stage").value;
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+}
 
-  let calories = "";
-  let meals = "";
-  let nutrients = "";
+.language-box {
+  text-align: right;
+}
 
-  // Underweight
-  if (weight < 50) {
+.language-box select {
+  padding: 10px;
+  border-radius: 10px;
+}
 
-    calories = "2600 kcal/day";
+h1 {
+  color: #d63384;
+  font-size: 40px;
+}
 
-    nutrients =
-      "High Protein, Iron, Calcium, Healthy Fats";
+.subtitle {
+  color: #555;
+}
 
-    meals =
-      `
-      🍌 Banana Milkshake with Oats<br>
-      🍚 Rice with Dal and Paneer<br>
-      🥜 Dry Fruits and Yogurt<br>
-      🥣 Vegetable Soup with Chapati
-      `;
-  }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
 
-  // Normal Weight
-  else if (weight >= 50 && weight <= 70) {
+input,
+select {
+  width: 90%;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
 
-    calories = "2300 kcal/day";
+button {
+  background: #ff66a3;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    nutrients =
-      "Balanced Protein, Vitamins, Iron, Calcium";
+button:hover {
+  background: #e05590;
+}
 
-    meals =
-      `
-      🥞 Idli with Coconut Chutney<br>
-      🥗 Chapati with Dal and Vegetables<br>
-      🍎 Fruit Salad and Nuts<br>
-      🍲 Khichdi with Curd
-      `;
-  }
+.result {
+  background: white;
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 20px;
+}
 
-  // Overweight
-  else {
+.meal-box {
+  background: #fff0f5;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
 
-    calories = "2000 kcal/day";
+/* Popup */
 
-    nutrients =
-      "Low Fat, Fiber Rich, Iron, Vitamins";
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
 
-    meals =
-      `
-      🥣 Oats with Fruits<br>
-      🍛 Brown Rice with Vegetables<br>
-      🥗 Sprouts Salad<br>
-      🍲 Soup with Multigrain Roti
-      `;
-  }
+.popup-content {
+  background: white;
+  width: 80%;
+  max-width: 600px;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+}
 
-  document.getElementById("result").innerHTML = `
-
-    <h2>🌸 Personalized Nutrition Plan</h2>
-
-    <p><b>Mother Name:</b> ${name}</p>
-
-    <p><b>Pregnancy Stage:</b> ${stage}</p>
-
-    <p><b>Recommended Calories:</b> ${calories}</p>
-
-    <p><b>Essential Nutrients:</b> ${nutrients}</p>
-
-    <div class="meal-box">
-
-      <h3>🍽 Suggested Meals</h3>
-
-      <p>${meals}</p>
-
-    </div>
-
-  `;
-
-  // Chrome Notifications
-
-  if (Notification.permission !== "granted") {
-    Notification.requestPermission();
-  }
-
-  if (Notification.permission === "granted") {
-
-    new Notification("🌸 Nutrition Reminder", {
-      body: "Drink water and eat healthy meals on time 💧"
-    });
-
-  }
-
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #d63384;
 }
