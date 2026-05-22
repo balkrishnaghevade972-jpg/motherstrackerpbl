@@ -1,75 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutrition Tracker for Mothers</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Nutrition Tracker for Mothers
+  </title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="language-box">
-    <select id="language" onchange="changeLanguage()">
-      <option value="english">English</option>
-      <option value="marathi">मराठी</option>
-    </select>
+    <!-- Language Switch -->
+
+    <div class="language-box">
+
+      <select
+        id="language"
+        onchange="changeLanguage()"
+      >
+
+        <option value="english">
+          English
+        </option>
+
+        <option value="marathi">
+          मराठी
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- Title -->
+
+    <h1 id="title">
+      🌸 Nutrition Tracker for Mothers
+    </h1>
+
+    <p
+      class="subtitle"
+      id="subtitle"
+    >
+
+      Healthy Mothers, Healthy Future
+
+    </p>
+
+    <!-- Form -->
+
+    <div class="card">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter Mother's Name"
+      >
+
+      <input
+        type="number"
+        id="weight"
+        placeholder="Enter Weight (KG)"
+      >
+
+      <select id="stage">
+
+        <option>
+          Before Pregnancy
+        </option>
+
+        <option>
+          First Trimester
+        </option>
+
+        <option>
+          Second Trimester
+        </option>
+
+        <option>
+          Third Trimester
+        </option>
+
+        <option>
+          After Pregnancy
+        </option>
+
+      </select>
+
+      <button
+        onclick="generatePlan()"
+        id="btn"
+      >
+
+        Generate Nutrition Plan
+
+      </button>
+
+    </div>
+
+    <!-- Result -->
+
+    <div
+      class="result"
+      id="result"
+    >
+
+      <h2>
+        🌸 Personalized Nutrition Suggestions
+      </h2>
+
+      <p>
+        Your nutrition details will appear here.
+      </p>
+
+    </div>
+
   </div>
 
-  <h1 id="title">🌸 Nutrition Tracker for Mothers</h1>
+  <!-- Popup -->
 
-  <p class="subtitle" id="subtitle">
-    Healthy Mothers, Healthy Future
-  </p>
+  <div
+    id="popup"
+    class="popup"
+  >
 
-  <div class="card">
+    <div class="popup-content">
 
-    <input type="text" id="name" placeholder="Enter Mother's Name">
+      <span
+        class="close"
+        onclick="closePopup()"
+      >
 
-    <input type="number" id="weight" placeholder="Enter Weight (KG)">
+        &times;
 
-    <select id="stage">
-      <option>Before Pregnancy</option>
-      <option>First Trimester</option>
-      <option>Second Trimester</option>
-      <option>Third Trimester</option>
-      <option>After Pregnancy</option>
-    </select>
+      </span>
 
-    <button onclick="generatePlan()" id="btn">
-      Generate Nutrition Plan
-    </button>
+      <div id="popup-data"></div>
+
+    </div>
 
   </div>
 
-  <div class="result" id="result">
-
-    <h2>🌸 Personalized Nutrition Suggestions</h2>
-
-    <p>Your nutrition details will appear here.</p>
-
-  </div>
-
-</div>
-
-<!-- Popup -->
-
-<div id="popup" class="popup">
-
-  <div class="popup-content">
-
-    <span class="close" onclick="closePopup()">
-      &times;
-    </span>
-
-    <div id="popup-data"></div>
-
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
